@@ -1,0 +1,100 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Projeto</title>
+
+    <link href="~/css/bootstrap.css" rel="stylesheet" />
+
+</head>
+
+<body>
+    <!-- menu -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" style="padding-left:20px" href="#">Controle de Eventos</a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-
+                target="#navbarSupportedContent" aria-
+                controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/Home/Index">
+                        Página inicial
+                    </a>
+
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Eventos
+                    </a>
+
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="/Cliente/Cadastro">Cadastrar Evento</a></li>
+                        <li><a class="dropdown-item" href="/Cliente/Consulta">Consultar Agenda</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    @if (TempData["Mensagemsucesso"] != null)
+     {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Sucesso! </strong> @TempData["MensagemSucesso"]
+            <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                <span aria-hidden="true"> &times;</span>
+            </button>
+
+        </div>
+     }
+
+    @if (TempData["MensagemErro"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Erro! </strong> @TempData["MensagemErro"]
+            <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                <span aria-hidden="true"> &times;</span>
+            </button>
+        </div>
+     }
+
+    @if(TempData["MensagemAlerta"] != null)
+    {
+
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong> Alerta!</strong> @TempData["MensagemAlerta"]
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true"> &times;</span>
+            </button>
+
+        </div>
+
+
+    }
+
+
+    <div class="container mt-4">
+        <h5>Gerenciador de Agenda</h5>
+        <p>
+            Projeto desenvolvido em .NET CORE MVC com Dapper.
+        </p>
+        <hr />
+    </div>
+    @RenderBody()
+
+    <!-- arquivos javascript -->
+    <script src="~/js/jquery-3.5.1.min.js"></script>
+    <script src="~/js/bootstrap.js"></script>
+</body>
+</html>

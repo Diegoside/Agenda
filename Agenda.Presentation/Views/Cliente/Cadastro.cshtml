@@ -1,0 +1,80 @@
+﻿
+@model Agenda.Presentation.Models.CadastroEventoViewModel
+
+@{
+    ViewData["Title"] = "Cadastro";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h5>Cadastro De Eventos</h5>
+    <p>Cadastre abaixo seu evento</p>
+    <br />
+</div>
+
+@using (Html.BeginForm())
+{
+    <div class="container">
+        <div class="container form-group" style="background-color: #cccccc94">
+            <br />
+
+
+            <label style="font-weight: 700">Nome do Evento: </label>
+            @Html.TextBoxFor(model => model.Nome, new { @class = "form-control col=md-4", @autocomplete = "off", @placeholder = "Digite o nome do evento", @style = "width: 40%" })
+            <span class="text-danger">
+                @Html.ValidationMessageFor(model => model.Nome)
+            </span>
+            <br />
+
+            <label style="font-weight: 700">Data do Evento: </label>
+            @Html.TextBoxFor(model => model.Data, new { @class = "form-control col-md-4}", @autocomplete = "off", @type = "date", @style = "width: 19%" })
+            <span class="text-danger">
+                @Html.ValidationMessageFor(model => model.Data)
+            </span>
+            <br />
+
+            <label style="font-weight: 700"> Hora </label>
+            @Html.TextBoxFor(model => model.Hora, new { @class = "form-control col-md-4}", @autocomplete = "off", @type = "time", @style = "width: 19%" })
+            <span class="text-danger">
+                @Html.ValidationMessageFor(model => model.Hora)
+            </span>
+            <br />
+
+            <label style="font-weight: 700">Local:</label>
+            @Html.TextBoxFor(model => model.Local, new { @class = "form-control col-md-4", @autocomplete = "off", @placeholder = "Digire local do evento", @style = "width: 80%" })
+            <span class="text-danger">
+                @Html.ValidationMessageFor(model => model.Local)
+            </span>
+            <br />
+
+            <label style="font-weight: 700">Participantes:</label>
+            @Html.TextBoxFor(model => model.Participantes, new { @class = "form-control col=md-4", @autocomplete = "off", @placeholder = "Adicione um participante", @style = "width: 50%" })
+            <span class="text-danger">
+                @Html.ValidationMessageFor(model => model.Participantes)
+            </span>
+            <br />
+
+            <label style="font-weight: 700"> Tipo de evento </label>
+            <br />
+            @Html.RadioButtonFor(model => model.Tipo, "0") <span> Exclusivo </span>
+            @Html.RadioButtonFor(model => model.Tipo, "1") <span> Compartilhado </span>
+            <span class="text-danger">
+                @Html.ValidationMessageFor(model => model.Tipo)
+            </span>
+            <br />
+            <br />
+
+            <label style="font-weight: 700"> Descrição do Evento</label>
+            @Html.TextAreaFor(model => model.Descricao, new { @class = "form-control col=md-4", @autocomplete = "off", @placeholder = "Digite a descrição do evento", @style = "width: 80%" })
+            <span class="text-danger">
+                @Html.ValidationMessageFor(model => model.Descricao)
+            </span>
+            <br />
+            <input type="submit" class="btn btn-success" value="Adcionar Evento" />
+
+            <br />
+            <br />
+        </div>
+    </div>
+}
+

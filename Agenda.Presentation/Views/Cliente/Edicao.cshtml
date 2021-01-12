@@ -1,0 +1,59 @@
+﻿
+@model Agenda.Presentation.Models.EdicaoEventosViewModel
+@{
+    ViewData["Title"] = "Edicao";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm())
+{
+
+<div class="container">
+    <h5>Ediç]ao de Evento</h5>
+    <div class="container form-group" style="background-color: #cccccc94">
+        <br />
+        
+        
+            <label style="font-weight: 700">Nome do Evento: </label>
+        @Html.TextBoxFor(model => model.Nome, new { @class = "form-control col=md-4", @autocomplete = "off", @placeholder = "", @style = "width: 40%" })
+        <br />
+
+        <label style="font-weight: 700">Data do Evento: </label>
+        @Html.TextBoxFor(model => model.Data, new { @class = "form-control col-md-4}", @autocomplete = "off",@placeholder=Model.Data.ToString("dd/MM/yyyy"), @type = "date", @style = "width: 19%" })
+        <br />
+
+        <label style="font-weight: 700"> Hora </label>
+        @Html.TextBoxFor(model => model.Hora, new { @class = "form-control col-md-4}", @autocomplete = "off", @type = "time", @style = "width: 19%" })
+        <br />
+
+        <label style="font-weight: 700">Local:</label>
+        @Html.TextBoxFor(model => model.Local, new { @class = "form-control col-md-4", @autocomplete = "off", @placeholder = "", @style = "width: 80%" })
+        <br />
+
+        <label style="font-weight: 700">Participantes:</label>
+        @Html.TextBoxFor(model => model.Participantes, new { @class = "form-control col=md-4", @autocomplete = "off", @placeholder = "Adicione um participante", @style = "width: 50%" })
+        <br />
+
+        <label style="font-weight: 700"> Tipo de evento </label>
+        <br />
+        @Html.RadioButtonFor(model => model.Tipo, "0") <span> Exclusivo </span>
+        @Html.RadioButtonFor(model => model.Tipo, "1") <span> Compartilhado </span>
+        <br />
+        <br />
+
+        <label style="font-weight: 700"> Descrição do Evento</label>
+        @Html.TextAreaFor(model => model.Descricao, new { @class = "form-control col=md-4", @autocomplete = "off", @placeholder = "Digite a descrição do evento", @style = "width: 80%" })
+
+        <br />
+        <input type="submit" class="btn btn-success" value="Editar Evento" />
+
+        <br />
+        <br />
+    </div>
+
+
+</div>
+
+}
+

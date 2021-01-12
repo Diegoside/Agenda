@@ -1,0 +1,85 @@
+﻿
+@model Agenda.Presentation.Models.ConsultaEventosViewModel
+@{
+    ViewData["Title"] = "Consulta";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container">
+    <h5>Consulta de Eventos</h5>
+    <p>Pesquise aqui a Relação de eventos cadastrados</p>
+    <br />
+</div>
+
+@using (Html.BeginForm())
+{
+<div class="container">
+    <label> Data do Evento</label>
+    @Html.TextBoxFor(model => model.Data, new { @class = "form-control col-md-4}", @autocomplete = "off", @type = "date", @style = "width: 19%" })
+    <span class="text-danger">
+        @Html.ValidationMessageFor(Model => Model.Data)
+    </span>
+    <br />
+
+    <input type="submit" value="Pesquisar" class="btn btn-success" />
+
+    <br />
+    <br />
+    
+
+    @if (Model != null && Model.Eventos != null && Model.Eventos.Count() > 0)
+    {
+
+        <table class="table table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>Nome do Evento</th>
+                    <th>Descrição do evento</th>
+                    <th> Participantes </th>
+                    <th> Local </th>
+                    <th> Data </th>
+                    <th> tipo </th>
+                    <th width="200"> Operações</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model.Eventos)
+                {
+                    <tr>
+                        <td> @item.Nome </td>
+                        <td>@item.Descricao </td>
+                        <td> @item.Participantes </td>
+                        <td> @item.Local </td>
+                        <td> @item.Data.ToString("dd/MM/yyyy") </td>
+                        @if (item.Tipo == 0)
+                        {
+                         <td> Exclusivo </td>
+                        }
+                        else if(item.Tipo == 1)
+                        {
+                            <td> Compartilhado </td>
+                        }
+                        <td>
+                            @*<a href="#" class="btn btn-success btn-sm">Exibir</a>*@
+                            <a href="/Cliente/Edicao?id=@item.Id" data-toggle="modal" class="btn btn-primary btn-sm">Editar</a>
+                            <a href="/Cliente/Exclusao?id=@item.Id" onclick="return window.confirm('Deseja excluir o evento @item.Nome?')" 
+                               class="btn btn-danger btn-sm">Excluir</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="8">Quantidade de Eventos: @Model.Eventos.Count() </td>
+                </tr>
+            </tfoot>
+
+        </table>
+    }
+    </div>
+
+
+
+}

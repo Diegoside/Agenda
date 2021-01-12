@@ -1,0 +1,46 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div class="container">
+        <div class="">
+            <h4> Bem vindo ao Gerenciador de Agendas</h4>
+            <p> Gerencie seus eventos para nunca mais perder seus compromissos!!</p>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <img style="width:100%" src="/img/calendario.jpg"  />
+                        <h5 class="card-title"> Cadastre um evento</h5>
+                        <p class="card-text">Cadastre aqui seu evento de forma rápida e facil.</p>
+                        <a href="/Cliente/Cadastro" class="btn btn-primary">Cadastrar evento</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <img style="width:100%" src="/img/agenda2.png" />
+                        <h5 class="card-title">Consulta Eventos</h5>
+                        <p class="card-text"> Consulte Aqui os Eventos Cadastrados, para ficar por dentro dos melhores eventos!</p>
+                        <a href="/Cliente/Consulta" class="btn btn-primary">Consulte aqui</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
